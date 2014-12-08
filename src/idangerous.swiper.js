@@ -1909,9 +1909,9 @@ var Swiper = function (selector, params) {
 
     _this.swipeTo = function (index, speed, runCallbacks) {
         index = parseInt(index, 10);
+        if (params.loop) index = index + _this.loopedSlides;
         if (!isFinite(index) || index > (_this.slides.length - 1) || index < 0) return;
         _this.callPlugins('onSwipeTo', {index: index, speed: speed});
-        if (params.loop) index = index + _this.loopedSlides;
         var currentPosition = _this.getWrapperTranslate();
         var newPosition;
         if (params.slidesPerView === 'auto') {
